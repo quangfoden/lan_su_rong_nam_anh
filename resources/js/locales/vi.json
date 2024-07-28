@@ -1,0 +1,36 @@
+{
+    "top_bar": {
+        "menu_text": {
+            "home": "TRANG CHỦ",
+            "about": "VỀ NAM ANH",
+            "products": "SẢN PHẨM NAM ANH",
+            "news": "TIN TỨC NAM ANH"
+        }
+    },
+    "placeholder": {
+        "news_filter_year": "Chọn năm",
+        "news_filter_search": "Tìm kiếm",
+        "contact_popup": {
+            "name": "Tên",
+            "subject": "Tiêu đề",
+            "message": "Tin nhắn"
+        }
+    },
+    "button": {
+        "load_more": "Xem Thêm",
+        "learn_more": "Xem Thêm",
+        "back": "Trở lại",
+        "like": "THÍCH",
+        "copy_link": "SAO CHÉP LINK",
+        "news_all": "Tất cả",
+        "contact": "Liên hệ",
+        "contact_submit": "Gửi",
+        "official_site": "Trang chủ"
+    },
+    "text": {
+        "available_at": "Có mặt tại"
+    },
+    "alert": {
+        "data_not_found": "Không có kết quả."
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "top_bar": {
+        "menu_text": {
+            "home": "HOME",
+            "about": "ABOUT NAM ANH",
+            "products": "ALL PRODUCTS",
+            "news": "NAM ANH NEWS"
+        }
+    },
+    "placeholder": {
+        "news_filter_year": "Pick a year",
+        "news_filter_search": "Search",
+        "contact_popup": {
+            "name": "Name",
+            "subject": "Subject",
+            "message": "Message"
+        }
+    },
+    "button": {
+        "load_more": "Load More",
+        "learn_more": "Learn More",
+        "back": "Back",
+        "like": "LIKE",
+        "copy_link": "COPY LINK",
+        "news_all": "All News",
+        "contact": "Contact",
+        "contact_submit": "Send Message",
+        "official_site": "Official Site"
+    },
+    "text": {
+        "available_at": "Available at"
+    },
+    "alert": {
+        "data_not_found": "Data not found."
+    }
+}
