@@ -93,6 +93,10 @@
     }
 
     // end-home-page
+    .home-content #newsContentSection.detail .full_content p img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media screen and (max-width:1900px) {

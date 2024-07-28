@@ -58,6 +58,10 @@
   #icon_list_menu {
     display: none;
   }
+  .home-content #newsContentSection.detail .full_content p img {
+    width: 100%;
+    height: auto;
+  }
 }
 @media screen and (max-width: 1900px) {
   .home-content #productsBannerSection .banner_wrapper {

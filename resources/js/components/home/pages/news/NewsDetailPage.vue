@@ -144,7 +144,7 @@ export default {
         },
         copyLink() {
             navigator.clipboard.writeText(document.URL);
-            alert('The link has been copied.');
+            alert('Đã sao chép liên kết.');
         },
         convertLang(text) {
             return text?.split(`[:${this.lang}]`)[1] ?? text

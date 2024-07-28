@@ -10,6 +10,7 @@ use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\News\CategoryController;
 use App\Http\Controllers\API\News\PostController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,3 +117,6 @@ Route::get('all-posts', [PostController::class, 'allPosts']);
 Route::get('latest-posts', [PostController::class, 'latestPosts']);
 Route::get('post/{slug}', [PostController::class, 'detailBySlug']);
 Route::post('post/like/{id}', [PostController::class, 'likePost']);
+
+Route::post('/upload_image', [ImageUploadController::class, 'upload']);
+Route::post('/edit_image', [ImageUploadController::class, 'editImage']);

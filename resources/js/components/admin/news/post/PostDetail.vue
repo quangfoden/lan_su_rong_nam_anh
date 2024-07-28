@@ -11,131 +11,73 @@
                                 <i v-if="isDisabled" class="fas fa-lock-open"></i>
                             </button>
                             <span class="lang_selector form-group col-2 p-0">
-                                  <select
-                                      v-model="formLang"
-                                      class="form-select"
-                                      @change="changeFormLang"
-                                  >
-                                      <option
-                                          v-for="(lang, key) in $config.langOptions"
-                                          :key="key"
-                                          :value="key"
-                                      >
-                                          {{ lang }}
-                                      </option>
-                                  </select>
-                              </span>
+                                <select v-model="formLang" class="form-select" @change="changeFormLang">
+                                    <option v-for="(lang, key) in $config.langOptions" :key="key" :value="key">
+                                        {{ lang }}
+                                    </option>
+                                </select>
+                            </span>
                         </h4>
                         <form @submit.prevent="updatePost">
                             <div class="row">
                                 <div class="col-9">
                                     <div class="form-group">
                                         <label>Title <sup class="text-red">*</sup></label>
-                                        <input
-                                            v-model="data.title"
-                                            @input="setTitleForLang(data.title)"
-                                            type="text"
-                                            placeholder="Nhập tên"
-                                            class="form-control"
-                                            required
-                                            :disabled="isDisabled"
-                                        />
+                                        <input v-model="data.title" @input="setTitleForLang(data.title)" type="text"
+                                            placeholder="Nhập tên" class="form-control" required
+                                            :disabled="isDisabled" />
                                     </div>
                                     <div class="form-group">
                                         <label>Slug <sup class="text-red">*</sup></label>
-                                        <input
-                                            v-model="data.slug"
-                                            type="text"
-                                            placeholder="Nhập slug"
-                                            class="form-control"
-                                            required
-                                            :disabled="isDisabled"
-                                        />
+                                        <input v-model="data.slug" type="text" placeholder="Nhập slug"
+                                            class="form-control" required :disabled="isDisabled" />
                                     </div>
                                     <div class="form-group">
                                         <label>Source</label>
-                                        <input
-                                            v-model="data.source"
-                                            type="text"
-                                            placeholder="Nhập source"
-                                            class="form-control"
-                                            :disabled="isDisabled"
-                                        />
+                                        <input v-model="data.source" type="text" placeholder="Nhập source"
+                                            class="form-control" :disabled="isDisabled" />
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea
-                                            class="form-control"
-                                            v-model="data.desc"
-                                            @input="setDescForLang(data.desc)"
-                                            cols="30"
-                                            rows="3"
-                                            placeholder="Nhập miêu tả"
-                                            :disabled="isDisabled"
-                                        ></textarea>
+                                        <textarea class="form-control" v-model="data.desc"
+                                            @input="setDescForLang(data.desc)" cols="30" rows="3"
+                                            placeholder="Nhập miêu tả" :disabled="isDisabled"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Content <sup class="text-red">*</sup></label>
-                                        <Editor
-                                            :api-key="this.$config.tiny_mce.api_key"
-                                            v-model="data.content"
-                                            :init="{
-                                             height: 500,
-                                             plugins: this.$config.tiny_mce.plugins,
-                                             toolbar: this.$config.tiny_mce.toolbar
-                                           }"
-                                            :disabled="isDisabled"
+                                        <Editor :api-key="this.$config.tiny_mce.api_key" v-model="data.content"
+                                            :init="tinymceInit" :disabled="isDisabled"
                                             @keyPress="setContentForLang(data.content)"
-                                            @focusOut="setContentForLang(data.content)"
-                                        />
+                                            @focusOut="setContentForLang(data.content)" />
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Categories <sup class="text-red">*</sup></label>
-                                        <select
-                                            id="selectBoxCategories"
-                                            class="form-select"
-                                            v-model="data.categories_id"
-                                            multiple
-                                            :disabled="isDisabled"
-                                        >
-                                            <option
-                                                v-for="(opt, idx) in categoryOpts"
-                                                :key="idx"
-                                                :value="opt.id"
-                                            >
+                                        <select id="selectBoxCategories" class="form-select"
+                                            v-model="data.categories_id" multiple :disabled="isDisabled">
+                                            <option v-for="(opt, idx) in categoryOpts" :key="idx" :value="opt.id">
                                                 {{ convertLang(opt.title) }}
                                             </option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Publish Date</label>
-                                        <input
-                                            class="form-control"
-                                            type="date"
-                                            v-model="data.publish_date"
-                                            :disabled="isDisabled"
-                                        >
+                                        <input class="form-control" type="date" v-model="data.publish_date"
+                                            :disabled="isDisabled">
                                     </div>
                                     <div class="form-group">
                                         <label>Active</label>
-                                        <select
-                                            class="form-select form-control"
-                                            v-model="data.active"
-                                            :disabled="isDisabled"
-                                        >
+                                        <select class="form-select form-control" v-model="data.active"
+                                            :disabled="isDisabled">
                                             <option value="1" selected>Hoạt Động</option>
                                             <option value="0">Tạm Ngừng</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Is Hot</label>
-                                        <select
-                                            class="form-select form-control"
-                                            v-model="data.is_hot"
-                                            :disabled="isDisabled"
-                                        >
+                                        <select class="form-select form-control" v-model="data.is_hot"
+                                            :disabled="isDisabled">
                                             <option value="1">Có</option>
                                             <option value="0" selected>Không</option>
                                         </select>
@@ -144,13 +86,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <label>Image:</label>
-                                                <input type="file"
-                                                       class="form-control"
-                                                       ref="post_img"
-                                                       onchange="const reader = new FileReader();reader.readAsDataURL(this.files[0]);reader.onload = (event) => {$(this).parents('.form-group').find('.show_post_img').attr('src', event.target.result)}"
-                                                       accept="image/jpeg, image/png"
-                                                       :disabled="isDisabled"
-                                                >
+                                                <input type="file" class="form-control" ref="post_img"
+                                                    onchange="const reader = new FileReader();reader.readAsDataURL(this.files[0]);reader.onload = (event) => {$(this).parents('.form-group').find('.show_post_img').attr('src', event.target.result)}"
+                                                    accept="image/jpeg, image/png" :disabled="isDisabled">
                                             </div>
                                             <div class="col-12 mt-3 text-center">
                                                 <img class="show_post_img w-100" :src="data.image" alt="">
@@ -173,7 +111,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations, mapActions} from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 import Editor from '@tinymce/tinymce-vue';
 
 export default {
@@ -186,11 +124,37 @@ export default {
             categoryOpts: [],
             isDisabled: true,
             dataLang: {
-              title: [],
-              desc: [],
-              content: []
+                title: [],
+                desc: [],
+                content: []
             },
-            formLang: this.$config.languages[0]
+            formLang: this.$config.languages[0],
+            tinymceInit: {
+                height: 500,
+                plugins: this.$config.tiny_mce.plugins,
+                toolbar: this.$config.tiny_mce.toolbar + ' | editimage',
+                setup: (editor) => {
+                    editor.ui.registry.addButton('editimage', {
+                        text: 'Edit Image',
+                        onAction: () => {
+                            const selectedNode = editor.selection.getNode();
+                            if (selectedNode && selectedNode.nodeName === 'IMG') {
+                                const imageUrl = selectedNode.src;
+                                this.editImage(imageUrl, (newImageUrl) => {
+                                    editor.dom.setAttrib(selectedNode, 'src', newImageUrl);
+                                });
+                            } else {
+                                alert('Please select an image to edit.');
+                            }
+                        }
+                    });
+                },
+                images_upload_url: this.$config.tiny_mce.images_upload_url,
+                automatic_uploads: this.$config.tiny_mce.automatic_uploads,
+                file_picker_types: this.$config.tiny_mce.file_picker_types,
+                file_picker_callback: this.$config.tiny_mce.file_picker_callback,
+                images_upload_handler: this.$config.tiny_mce.images_upload_handler
+            }
         };
     },
     created() {
@@ -289,7 +253,7 @@ export default {
         },
         getCategoryOpts() {
             this.axios
-                .get("/api/admin/category/category-opts", {params: {for_post: 1}})
+                .get("/api/admin/category/category-opts", { params: { for_post: 1 } })
                 .then((response) => {
                     if (
                         response.data.message === "success" &&
@@ -314,61 +278,92 @@ export default {
             });
         },
         convertResponseData() {
-          this.$config.languages.forEach(lang => {
-            this.dataLang.title[lang] = this.data.title.split(`[:${lang}]`)[1];
-            this.dataLang.desc[lang] = this.data.desc.split(`[:${lang}]`)[1];
-            this.dataLang.content[lang] = this.data.content.split(`[:${lang}]`)[1];
-          });
-          this.changeFormLang();
+            this.$config.languages.forEach(lang => {
+                this.dataLang.title[lang] = this.data.title.split(`[:${lang}]`)[1];
+                this.dataLang.desc[lang] = this.data.desc.split(`[:${lang}]`)[1];
+                this.dataLang.content[lang] = this.data.content.split(`[:${lang}]`)[1];
+            });
+            this.changeFormLang();
         },
         changeFormLang() {
-          this.data.title = this.dataLang.title[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
-          this.data.desc = this.dataLang.desc[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
-          this.data.content = this.dataLang.content[this.formLang]?.replaceAll(`[:${this.formLang}]`, '') ?? '';
+            this.data.title = this.dataLang.title[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
+            this.data.desc = this.dataLang.desc[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
+            this.data.content = this.dataLang.content[this.formLang]?.replaceAll(`[:${this.formLang}]`, '') ?? '';
         },
         setTitleForLang(title) {
-          this.dataLang.title[this.formLang] = `[:${this.formLang}]${title}[:${this.formLang}]`;
+            this.dataLang.title[this.formLang] = `[:${this.formLang}]${title}[:${this.formLang}]`;
         },
         setDescForLang(desc) {
-          this.dataLang.desc[this.formLang] = `[:${this.formLang}]${desc}[:${this.formLang}]`;
+            this.dataLang.desc[this.formLang] = `[:${this.formLang}]${desc}[:${this.formLang}]`;
         },
         setContentForLang(content) {
-          this.dataLang.content[this.formLang] = `[:${this.formLang}]${content}[:${this.formLang}]`;
+            this.dataLang.content[this.formLang] = `[:${this.formLang}]${content}[:${this.formLang}]`;
         },
         convertRequestDataLang() {
-          this.requestData = Object.assign({}, this.data);
-          let langTitle = '', langDesc = '', langContent = '';
-          this.$config.languages.forEach(lang => {
+            this.requestData = Object.assign({}, this.data);
+            let langTitle = '', langDesc = '', langContent = '';
+            this.$config.languages.forEach(lang => {
 
-            langTitle += typeof this.dataLang.title[lang] === 'undefined' ? `[:${lang}][:${lang}]` :
-                (
-                    !this.dataLang.title[lang].includes(`[:${lang}]`) ?
-                        `[:${lang}]${this.dataLang.title[lang]}[:${lang}]` :
-                        this.dataLang.title[lang]
-                );
+                langTitle += typeof this.dataLang.title[lang] === 'undefined' ? `[:${lang}][:${lang}]` :
+                    (
+                        !this.dataLang.title[lang].includes(`[:${lang}]`) ?
+                            `[:${lang}]${this.dataLang.title[lang]}[:${lang}]` :
+                            this.dataLang.title[lang]
+                    );
 
-            langDesc += typeof this.dataLang.desc[lang] === 'undefined' ? `[:${lang}][:${lang}]` :
-                (
-                    !this.dataLang.desc[lang].includes(`[:${lang}]`) ?
-                    `[:${lang}]${this.dataLang.desc[lang]}[:${lang}]` :
-                    this.dataLang.desc[lang]
-                );
+                langDesc += typeof this.dataLang.desc[lang] === 'undefined' ? `[:${lang}][:${lang}]` :
+                    (
+                        !this.dataLang.desc[lang].includes(`[:${lang}]`) ?
+                            `[:${lang}]${this.dataLang.desc[lang]}[:${lang}]` :
+                            this.dataLang.desc[lang]
+                    );
 
-            langContent += typeof this.dataLang.content[lang] === 'undefined' ? `[:${lang}][:${lang}]` :
-                (
-                    !this.dataLang.content[lang].includes(`[:${lang}]`) ?
-                    `[:${lang}]${this.dataLang.content[lang]}[:${lang}]` :
-                    this.dataLang.content[lang]
-                );
+                langContent += typeof this.dataLang.content[lang] === 'undefined' ? `[:${lang}][:${lang}]` :
+                    (
+                        !this.dataLang.content[lang].includes(`[:${lang}]`) ?
+                            `[:${lang}]${this.dataLang.content[lang]}[:${lang}]` :
+                            this.dataLang.content[lang]
+                    );
 
-          });
+            });
 
-          this.requestData.title = langTitle;
-          this.requestData.desc = langDesc;
-          this.requestData.content = langContent;
+            this.requestData.title = langTitle;
+            this.requestData.desc = langDesc;
+            this.requestData.content = langContent;
+        },
+        editImage(imageUrl, callback) {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.onchange = function () {
+                const file = this.files[0];
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('current_image_url', imageUrl);
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/api/edit_image', true);
+                xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const json = JSON.parse(xhr.responseText);
+                        if (json.success && json.new_image_url) {
+                            callback(json.new_image_url);
+                        } else {
+                            console.error('Failed to edit image:', json.message);
+                        }
+                    } else {
+                        console.error('Failed to edit image:', xhr.status, xhr.statusText);
+                    }
+                };
+
+                xhr.send(formData);
+            };
+            input.click();
         },
         convertLang(text) {
-          return text.split(`[:${this.formLang}]`)[1] ?? text
+            return text.split(`[:${this.formLang}]`)[1] ?? text
         }
     },
 };

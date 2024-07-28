@@ -5,18 +5,10 @@
                 <div class="card-body">
                     <div class="col-md-12 card show border border-0 p-4">
                         <h4 class="card-title text-center fs-4 mb-4">
-                          Thêm Bài Viết
-                          <span class="lang_selector form-group col-2 p-0">
-                                <select
-                                    v-model="formLang"
-                                    class="form-select"
-                                    @change="changeFormLang"
-                                >
-                                    <option
-                                        v-for="(lang, key) in $config.langOptions"
-                                        :key="key"
-                                        :value="key"
-                                    >
+                            Thêm Bài Viết
+                            <span class="lang_selector form-group col-2 p-0">
+                                <select v-model="formLang" class="form-select" @change="changeFormLang">
+                                    <option v-for="(lang, key) in $config.langOptions" :key="key" :value="key">
                                         {{ lang }}
                                     </option>
                                 </select>
@@ -27,69 +19,48 @@
                                 <div class="col-9">
                                     <div class="form-group">
                                         <label>Title <sup class="text-red">*</sup></label>
-                                        <input
-                                            v-model="data.title"
-                                            @input="convertSlug(data.title);setTitleForLang(data.title)"
-                                            type="text"
-                                            placeholder="Nhập tên"
-                                            class="form-control"
-                                            required
-                                        />
+                                        <input v-model="data.title"
+                                            @input="convertSlug(data.title); setTitleForLang(data.title)" type="text"
+                                            placeholder="Nhập tên" class="form-control" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Slug <sup class="text-red">*</sup></label>
-                                        <input
-                                            v-model="data.slug"
-                                            type="text"
-                                            placeholder="Nhập slug"
-                                            class="form-control"
-                                            required
-                                        />
+                                        <input v-model="data.slug" type="text" placeholder="Nhập slug"
+                                            class="form-control" required />
                                     </div>
                                     <div class="form-group">
                                         <label>Source</label>
-                                        <input
-                                            v-model="data.source"
-                                            type="text"
-                                            placeholder="Nhập source"
-                                            class="form-control"
-                                        />
+                                        <input v-model="data.source" type="text" placeholder="Nhập source"
+                                            class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea
-                                            class="form-control"
-                                            v-model="data.desc"
-                                            @input="setDescForLang(data.desc)"
-                                            cols="30"
-                                            rows="3"
-                                            placeholder="Nhập miêu tả"
-                                        ></textarea>
+                                        <textarea class="form-control" v-model="data.desc"
+                                            @input="setDescForLang(data.desc)" cols="30" rows="3"
+                                            placeholder="Nhập miêu tả"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Content <sup class="text-red">*</sup></label>
-                                        <Editor
-                                            :api-key="this.$config.tiny_mce.api_key"
-                                            v-model="data.content"
-                                            :init="{
-                                             height: 500,
-                                             plugins: this.$config.tiny_mce.plugins,
-                                             toolbar: this.$config.tiny_mce.toolbar
-                                           }"
-                                            @keyUp="setContentForLang(data.content)"
-                                            @focusOut="setContentForLang(data.content)"
-                                        />
+                                        <Editor :api-key="this.$config.tiny_mce.api_key" 
+                                        v-model="data.content" 
+                                        :init="{
+                                            height: 500,
+                                            plugins: this.$config.tiny_mce.plugins,
+                                            toolbar: this.$config.tiny_mce.toolbar,
+                                            images_upload_url: this.$config.tiny_mce.images_upload_url,
+                                            automatic_uploads: this.$config.tiny_mce.automatic_uploads,
+                                            file_picker_types: this.$config.tiny_mce.file_picker_types,
+                                            file_picker_callback: this.$config.tiny_mce.file_picker_callback,
+                                            images_upload_handler: this.$config.tiny_mce.images_upload_handler
+                                        }" @keyUp=" setContentForLang(data.content)"
+                                            @focusOut="setContentForLang(data.content)" />
                                     </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Categories <sup class="text-red">*</sup></label>
                                         <select id="selectBoxCategories" class="form-select" multiple>
-                                            <option
-                                                v-for="(opt, idx) in categoryOpts"
-                                                :key="idx"
-                                                :value="opt.id"
-                                            >
+                                            <option v-for="(opt, idx) in categoryOpts" :key="idx" :value="opt.id">
                                                 {{ convertLang(opt.title) }}
                                             </option>
                                         </select>
@@ -116,13 +87,9 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <label>Image: <sup class="text-red">*</sup></label>
-                                                <input type="file"
-                                                       class="form-control"
-                                                       ref="post_img"
-                                                       onchange="const reader = new FileReader();reader.readAsDataURL(this.files[0]);reader.onload = (event) => {$(this).parents('.form-group').find('.show_post_img').attr('src', event.target.result)}"
-                                                       accept="image/jpeg, image/png"
-                                                       required
-                                                >
+                                                <input type="file" class="form-control" ref="post_img"
+                                                    onchange="const reader = new FileReader();reader.readAsDataURL(this.files[0]);reader.onload = (event) => {$(this).parents('.form-group').find('.show_post_img').attr('src', event.target.result)}"
+                                                    accept="image/jpeg, image/png" required>
                                             </div>
                                             <div class="col-12 mt-3 text-center">
                                                 <img class="show_post_img w-100" src="" alt="">
@@ -145,7 +112,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations, mapActions} from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 import router from "@resources/js/router/index";
 import Editor from "@tinymce/tinymce-vue";
 
@@ -169,9 +136,9 @@ export default {
             },
             categoryOpts: [],
             dataLang: {
-              title: [],
-              desc: [],
-              content: []
+                title: [],
+                desc: [],
+                content: []
             },
             formLang: this.$config.languages[0]
         };
@@ -246,7 +213,7 @@ export default {
         },
         getCategoryOpts() {
             this.axios
-                .get("/api/admin/category/category-opts", {params: {for_post: 1}})
+                .get("/api/admin/category/category-opts", { params: { for_post: 1 } })
                 .then((response) => {
                     if (
                         response.data.message === "success" &&
@@ -276,37 +243,53 @@ export default {
             this.data.slug = str.replace(/[^0-9a-z-]+/g, "");
         },
         changeFormLang() {
-          this.data.title = this.dataLang.title[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
-          this.data.desc = this.dataLang.desc[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
-          this.data.content = this.dataLang.content[this.formLang]?.replaceAll(`[:${this.formLang}]`, '') ?? '';
+            this.data.title = this.dataLang.title[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
+            this.data.desc = this.dataLang.desc[this.formLang]?.replaceAll(`[:${this.formLang}]`, '');
+            this.data.content = this.dataLang.content[this.formLang]?.replaceAll(`[:${this.formLang}]`, '') ?? '';
         },
         setTitleForLang(title) {
-          this.dataLang.title[this.formLang] = `[:${this.formLang}]${title}[:${this.formLang}]`;
+            this.dataLang.title[this.formLang] = `[:${this.formLang}]${title}[:${this.formLang}]`;
         },
         setDescForLang(desc) {
-          this.dataLang.desc[this.formLang] = `[:${this.formLang}]${desc}[:${this.formLang}]`;
+            this.dataLang.desc[this.formLang] = `[:${this.formLang}]${desc}[:${this.formLang}]`;
         },
         setContentForLang(content) {
-          this.dataLang.content[this.formLang] = `[:${this.formLang}]${content + ' '}[:${this.formLang}]`;
+            this.dataLang.content[this.formLang] = `[:${this.formLang}]${content + ' '}[:${this.formLang}]`;
         },
         convertRequestDataLang() {
-          this.requestData = Object.assign({}, this.data);
-          let langTitle = '', langDesc = '', langContent = '';
-          this.$config.languages.forEach(lang => {
-            langTitle += typeof this.dataLang.title[lang] === 'undefined' ?
-                `[:${lang}][:${lang}]` : this.dataLang.title[lang];
-            langDesc += typeof this.dataLang.desc[lang] === 'undefined' ?
-                `[:${lang}][:${lang}]` : this.dataLang.desc[lang];
-            langContent += typeof this.dataLang.content[lang] === 'undefined' ?
-                `[:${lang}][:${lang}]` : this.dataLang.content[lang];
-          });
+            this.requestData = Object.assign({}, this.data);
+            let langTitle = '', langDesc = '', langContent = '';
+            this.$config.languages.forEach(lang => {
+                langTitle += typeof this.dataLang.title[lang] === 'undefined' ?
+                    `[:${lang}][:${lang}]` : this.dataLang.title[lang];
+                langDesc += typeof this.dataLang.desc[lang] === 'undefined' ?
+                    `[:${lang}][:${lang}]` : this.dataLang.desc[lang];
+                langContent += typeof this.dataLang.content[lang] === 'undefined' ?
+                    `[:${lang}][:${lang}]` : this.dataLang.content[lang];
+            });
 
-          this.requestData.title = langTitle;
-          this.requestData.desc = langDesc;
-          this.requestData.content = langContent;
+            this.requestData.title = langTitle;
+            this.requestData.desc = langDesc;
+            this.requestData.content = langContent;
+        },
+        imageUploadHandler(blobInfo, success, failure) {
+            let formData = new FormData();
+            formData.append('file', blobInfo.blob());
+
+            fetch('/api/upload_image', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(result => {
+                    success(result.location);
+                })
+                .catch(error => {
+                    failure('Image upload failed: ' + error.message);
+                });
         },
         convertLang(text) {
-          return text.split(`[:${this.formLang}]`)[1] ?? text
+            return text.split(`[:${this.formLang}]`)[1] ?? text
         }
     },
 };
