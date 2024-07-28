@@ -300,6 +300,9 @@
   .home-content #featuredProductsSection .container.container_2 {
     max-width: 1024px !important;
   }
+  .home-content #FeaturedSection h2 {
+    margin-block: 5%;
+  }
   .home-content #newsSection {
     padding-block: 5%;
   }
@@ -337,15 +340,19 @@
   .home-content #FeaturedSection .slider_wrapper {
     padding-right: 0;
   }
+  .home-content #FeaturedSection .slider_wrapper .swiper-wrapper {
+    margin-bottom: 5%;
+  }
   .home-content #FeaturedSection .slider_wrapper .swiper-wrapper .swiper-slide > div {
     display: block;
-    padding: 8% 0 0;
+    padding: 0;
   }
   .home-content #FeaturedSection .slider_wrapper .swiper-wrapper .swiper-slide .content_wrapper > .des {
     font-size: 100%;
   }
   .home-content #FeaturedSection .slider_wrapper .swiper-wrapper .swiper-slide .art_img_wrapper {
     width: initial;
+    padding-top: 0;
   }
   .home-content #FeaturedSection .slider_wrapper .swiper-wrapper .swiper-slide .art_img_wrapper .art_img {
     position: relative;
