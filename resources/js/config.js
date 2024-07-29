@@ -1,7 +1,7 @@
 const config = {
     notificationTimer: 3000,
     tiny_mce: {
-        api_key: "cw2b5h08m56tofzikcrxps9lufci53ls315hmwvf1eje98bu",
+        api_key: "5i8j4ohss0vt2ue6qzmyd4jzphmy5dbti00y61asvmgmht73",
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality ' +
             'code visualblocks visualchars fullscreen image link media template codesample table ' +
             'charmap hr pagebreak nonbreaking anchor insertdatetime advlist lists wordcount ' +
