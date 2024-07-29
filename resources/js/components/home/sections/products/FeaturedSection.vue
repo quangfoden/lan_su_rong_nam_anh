@@ -5,9 +5,8 @@
                 <div class="col-12">
                     <h2 class="ff_ss3_bold">{{ convertLang(productSecSettings.main_title) }}</h2>
                     <div class="slider_wrapper pl-0">
-                        <swiper @swiper="onSwiper" :loop="true" :modules="swiperModules" :simulateTouch="false" :autoplay="{
-                            delay: 5000
-                        }" :effect="'fade'">
+                        <swiper @swiper="onSwiper" :loop="true" :modules="swiperModules" :simulateTouch="false"
+                            :autoplay="{ delay: 5000 }" :effect="'fade'" v-if="listFeaturedProducts.length > 0">
                             <swiper-slide v-for="(item, idx) in listFeaturedProducts" :key="idx">
                                 <div>
                                     <div class="art_img_wrapper">
@@ -26,17 +25,18 @@
                                                 target="_blank">
                                                 {{ convertLang(productSecSettings.more_text) }}
                                             </a>
-                                            <a class="fb_btn hov3 cursor-poi" :href="generalSettingsDtPr.contact.link_fb" target="_blank">
+                                            <a class="fb_btn hov3 cursor-poi"
+                                                :href="generalSettingsDtPr.contact.link_fb" target="_blank">
                                                 <img src="/assets/images/footer/fb-xam.png" alt="">
                                             </a>
-                                            <a class="tt_btn hov3 cursor-poi" :href="generalSettingsDtPr.contact.link_tt" target="_blank">
+                                            <a class="tt_btn hov3 cursor-poi"
+                                                :href="generalSettingsDtPr.contact.link_tt" target="_blank">
                                                 <img src="/assets/images/footer/tiktok.png" alt="">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </swiper-slide>
-
                         </swiper>
                     </div>
                 </div>
@@ -46,10 +46,8 @@
     <deatailsProductModal v-if="isModalVisible" @close="closeModalDtProducts" :product="selectedProduct"
         :isVisible="isModalVisible" />
 </template>
-
 <script>
 import deatailsProductModal from '../../partials/deatailsProductModal.vue'
-
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -83,12 +81,8 @@ export default {
             this.axios
                 .get("/api/list-ishot")
                 .then((response) => {
-                    if (
-                        response.data.message === "success" &&
-                        response.data.status === 200
-                    ) {
+                    if (response.data.message === "success" && response.data.status === 200) {
                         this.listFeaturedProducts = response.data.data;
-                        this.indexEnd = Math.ceil(this.listFeaturedProducts.length / 3);
                     }
                 })
                 .catch((error) => {
@@ -102,6 +96,9 @@ export default {
         },
         onSwiper(swiper) {
             this.swiper = swiper;
+            this.$nextTick(() => {
+                this.swiper.update();
+            });
         },
         viewProductDetail(product) {
             this.selectedProduct = product;
@@ -111,7 +108,7 @@ export default {
             this.isModalVisible = false;
         },
         convertLang(text) {
-            return text?.split(`[:${this.lang}]`)[1] ?? text
+            return text?.split(`[:${this.lang}]`)[1] ?? text;
         }
     }
 };

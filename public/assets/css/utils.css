@@ -172,18 +172,23 @@ ul {
 }
 
 .stext-102 {
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: clamp(14px, 3vw, 20px);
+  line-height: 1.2;
+}
+
+.mtext-104 {
+  color: rgba(13, 199, 253, 0.74);
+  text-decoration: underline !important;
 }
 
 .mtext-105 {
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: clamp(24px, 4vw, 30px);
+  line-height: 1.2;
 }
 
 .mtext-106 {
-  font-size: 18px;
-  line-height: 1.388888;
+  font-size: clamp(20px, 4vw, 20px);
+  line-height: 1.2;
 }
 
 .p-l-25,

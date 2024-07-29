@@ -109,7 +109,7 @@
         #FeaturedSection {
             .slider_wrapper {
                 .swiper-wrapper {
-                  
+
 
                     .swiper-slide {
                         .art_img_wrapper {
@@ -539,6 +539,7 @@
 
                 .swiper-wrapper {
                     margin-bottom: 5%;
+
                     .swiper-slide>div {
                         display: block;
                         padding: 0;
@@ -798,6 +799,7 @@
     }
 
     // end-new-page
+
     // life-page
     .home-content {
         #lifeWithYouSection {
@@ -825,6 +827,10 @@
     .home-content #productsBannerSection .banner_wrapper,
     .home-content #newsBannerSection .banner_wrapper {
         height: 200px;
+    }
+
+    .home-content #AllProductSection .wrap-search_text .search_text {
+        width: 100%;
     }
 }
 
@@ -995,7 +1001,25 @@
     .home-content #FeaturedSection .slider_wrapper .swiper-pagination .item_bullets img {
         margin-top: 5px;
     }
+
+    .home-content #AllProductSection .ct_product {
+        height: 250px;
+    }
+
+    .home-content #AllProductSection .ct_product .ct_product_info .ct_g_info_desc .ct_g_info_desc_content {
+        margin-top: 5px;
+    }
+    .home-content #AllProductSection .ct_product .ct_product_info{
+        padding:10px;
+    }
+    .home-content #AllProductSection .ct_product .ct_product_home_link {
+        line-height: 40px;
+        height: 40px;
+        max-height: 40px;
+        bottom: 7px;
+    }
 }
+
 
 @media screen and (max-width:550px) {
 
