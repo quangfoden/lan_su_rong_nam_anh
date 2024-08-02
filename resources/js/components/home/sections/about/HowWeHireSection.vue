@@ -67,8 +67,6 @@ export default {
         }
     },
     created() {
-        console.log(this.lifeHowWeHireSec);
-        console.log(this.generalAbout);
     },
     methods: {
         toggleFaq(index) {

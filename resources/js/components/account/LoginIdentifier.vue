@@ -29,7 +29,7 @@
 
     <div class="mt-5 text-center">
       <p>
-        © 2024 Nam Anh
+          Nam Anh
         <i class="mdi mdi-heart text-danger"></i> Shop
       </p>
     </div>

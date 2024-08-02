@@ -43,6 +43,7 @@ import { i18n } from '../../../app';
 export default {
     data() {
         return {
+            isProcessing: false,
             isTransition: true,
             gsap,
             generalSettings: {},
@@ -85,17 +86,10 @@ export default {
             $('i.icons').toggleClass('fa-times')
         },
         callFunctionLeave(routePath) {
-            const routePath_1 = `/vi${routePath}`
-            const routePath_2 = `/en${routePath}`
-            if(this.$route.path.includes('vi')){
-                if (this.$route.path !== routePath_1) {
-                    this.leave(routePath);
-                }
-            }
-            if(this.$route.path.includes('en')){
-                if (this.$route.path !== routePath_2) {
-                    this.leave(routePath);
-                }
+            if (this.isProcessing) return;
+            if (this.$route.path !== `/${this.lang}${routePath}`) {
+                this.isProcessing = true;
+                this.leave(routePath);
             }
         },
         leave(routePath) {
@@ -136,9 +130,10 @@ export default {
                         onComplete: this.transitionComplete
                     })
                 );
-
-            setTimeout(() => {
-                router.push(routePath);
+                setTimeout(() => {
+                router.push(routePath).finally(() => {
+                    this.isProcessing = false;
+                });
             }, 500);
         },
         transitionComplete() {
