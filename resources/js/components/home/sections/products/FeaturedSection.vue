@@ -10,7 +10,7 @@
                             <swiper-slide v-for="(item, idx) in listFeaturedProducts" :key="idx">
                                 <div>
                                     <div class="art_img_wrapper">
-                                        <img class="art_img" :src="item.bg_img" alt="">
+                                        <img class="art_img" :src="item.img_cover" alt="">
                                     </div>
                                     <div class="content_wrapper">
                                         <div class="name ff_ss3_bold">

@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import LoginIdentifier from '../components/account/LoginIdentifier.vue';
 
 import AdminParent from "../components/admin/AdminParent.vue";
+import AdminDashboard from "../components/admin/Dashboard.vue";
 
 import RoleParent from '../components/admin/role/RoleParent.vue';
 import AllRoles from '../components/admin/role/AllRoles.vue';
@@ -76,6 +77,11 @@ export const routes = [
                 component: AdminParent,
                 meta: {requiresAuth: true},
                 children: [
+                    {
+                        path: '',
+                        name: 'Dashboard Details',
+                        component: AdminDashboard,
+                    },
                     {
                         path: 'role',
                         name: 'Role',

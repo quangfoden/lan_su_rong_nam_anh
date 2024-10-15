@@ -1,5 +1,5 @@
 <template>
-    <div id="QuestionAbout" class="pb-5">
+    <div id="QuestionAbout">
         <div class="container">
             <h2 class="ff_ss3_bold">{{ convertLang(lifeHowWeHireSec.main_title) }}</h2>
             <div class="row">
@@ -15,35 +15,38 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid pt-5">
-            <div class="row fw-bold">
-                <div class="col-12 col-md-6">
-                    <h3 class="mtext-101 fw-bold">{{convertLang(lifeHowWeHireSec.data.info.title)}}</h3>
-                    <p class="mtext-102 m-0">{{convertLang(lifeHowWeHireSec.data.info.title_small)}}</p>
-                    <p class="mtext-106 mb-1">{{convertLang(lifeHowWeHireSec.data.info.note_title_small)}}</p>
-                    <ul class="lstylen p-0">
-                        <li class="mtext-105">{{convertLang(lifeHowWeHireSec.data.info.hotline_title)}}
-                            <span class="mtext-103">{{ generalAbout.contact.hotline }}</span>
-                        </li>
-                        <li class="mtext-105">{{convertLang(lifeHowWeHireSec.data.info.zalo_title)}}
-                            <span class="mtext-103">{{ generalAbout.contact.hotline }}</span>
-                        </li>
-                        <li class="mtext-105">{{convertLang(lifeHowWeHireSec.data.info.fb_title)}}
-                            <a class="mtext-104" :href="generalAbout.contact.link_fb"
-                                target="_blank">Lân sư rồng Nam Anh</a>
-                        </li>
-                        <li class="mtext-105">{{convertLang(lifeHowWeHireSec.data.info.fanpage_title)}}
-                            <a class="mtext-104" :href="generalAbout.contact.link_page_fb"
-                                target="_blank">Lân sư rồng Nam Anh</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-6">
-                    <h3 class="mtext-101 text-center fw-bold">{{convertLang(lifeHowWeHireSec.data.info.customer_title)}}</h3>
-                    <div id="ImageKH">
-                        <div v-for="(imgKh, index) in lifeHowWeHireSec.data.images_kh" :key="index"
-                            class="imgkh hov-img0">
-                            <img :src="imgKh" alt="">
+        <div style="background-color: #333333; color: #ffffff;">
+            <div class="container-fluid mt-5 p-4">
+                <div class="row fw-bold">
+                    <div class="col-12 col-md-6">
+                        <h3 class="mtext-101 fw-bold">{{ convertLang(lifeHowWeHireSec.data.info.title) }}</h3>
+                        <p class="mtext-102 m-0">{{ convertLang(lifeHowWeHireSec.data.info.title_small) }}</p>
+                        <p class="mtext-106 mb-1">{{ convertLang(lifeHowWeHireSec.data.info.note_title_small) }}</p>
+                        <ul class="lstylen p-0">
+                            <li class="mtext-105">{{ convertLang(lifeHowWeHireSec.data.info.hotline_title) }}
+                                <span class="mtext-103">{{ generalAbout.contact.hotline }}</span>
+                            </li>
+                            <li class="mtext-105">{{ convertLang(lifeHowWeHireSec.data.info.zalo_title) }}
+                                <span class="mtext-103">{{ generalAbout.contact.hotline }}</span>
+                            </li>
+                            <li class="mtext-105">{{ convertLang(lifeHowWeHireSec.data.info.fb_title) }}
+                                <a class="mtext-104" :href="generalAbout.contact.link_fb" target="_blank">Lân sư rồng
+                                    Nam Anh</a>
+                            </li>
+                            <li class="mtext-105">{{ convertLang(lifeHowWeHireSec.data.info.fanpage_title) }}
+                                <a class="mtext-104" :href="generalAbout.contact.link_page_fb" target="_blank">Lân sư
+                                    rồng Nam Anh</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h3 class="mtext-101 text-center fw-bold">
+                            {{ convertLang(lifeHowWeHireSec.data.info.customer_title) }}</h3>
+                        <div id="ImageKH">
+                            <div v-for="(imgKh, index) in lifeHowWeHireSec.data.images_kh" :key="index"
+                                class="imgkh hov-img0">
+                                <img :src="imgKh" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>

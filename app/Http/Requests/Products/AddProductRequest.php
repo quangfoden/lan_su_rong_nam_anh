@@ -29,6 +29,7 @@ class AddProductRequest extends ApiRequest
             'price' => 'required|numeric|min:0',
             'bg_img' => 'bail|required',
             'details_img' => 'bail|required',
+            'img_cover' => 'bail|required',
             'status' => 'nullable|integer',
             'created_by' => 'exists:users,id',
         ];

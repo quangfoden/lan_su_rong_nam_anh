@@ -9,7 +9,7 @@
                 <ul class="metismenu list-unstyled" id="side-menu">
                     <li class="menu-title">Menu</li>
                     <li>
-                        <router-link :to="{ name: 'Dashboard' }"
+                        <router-link :to="{ name: 'Dashboard Details' }"
                                      class=" waves-effect"
                                      :class="{ 'mm-active': $route.name === 'Dashboard' }"
                                      exact tag="li"

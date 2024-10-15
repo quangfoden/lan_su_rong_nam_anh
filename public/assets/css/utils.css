@@ -176,6 +176,10 @@ ul {
   line-height: 1.2;
 }
 
+.mtext-101 {
+  margin-bottom: 20px;
+}
+
 .mtext-104 {
   color: rgba(13, 199, 253, 0.74);
   text-decoration: underline !important;

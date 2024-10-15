@@ -81,6 +81,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group art_img">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>Image Cover: <sup class="text-red">*</sup></label>
+                                                <input type="file" class="form-control" ref="img_cover"
+                                                    onchange="const reader = new FileReader();reader.readAsDataURL(this.files[0]);reader.onload = (event) => {$(this).parents('.form-group').find('.show_art_img').attr('src', event.target.result)}"
+                                                    accept="image/jpeg, image/png" :disabled="isDisabled">
+                                            </div>
+                                            <div class="col-8 text-center">
+                                                <img class="show_art_img" :src="data.img_cover" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -167,6 +180,7 @@ export default {
             formData.append('des', this.requestData.des);
             formData.append('details_img', this.$refs.details_img.files[0] ?? '');
             formData.append('bg_img', this.$refs.bg_img.files[0] ?? '');
+            formData.append('img_cover', this.$refs.img_cover.files[0] ?? '');
             formData.append('is_hot', this.data.is_hot);
             this.axios
                 .post(`/api/admin/products/${this.data.id}/update`, formData)

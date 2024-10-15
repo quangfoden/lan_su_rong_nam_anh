@@ -3,7 +3,7 @@
         <div class="overlay-modal"></div>
         <div class="modal-product-details">
             <div class="bg0 bor-10 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-                <button @click="closeModal"
+                <button style="background-color: #fff;" @click="closeModal"
                     class="how-pos3 bor-10 position-absolut top-0 p-2 border-0 hov3 trans-04 js-hide-modal1">
                     <img src="/assets/images/icons/icon-close2.png" alt="CLOSE">
                 </button>
@@ -30,7 +30,7 @@
                                                 <div class="wrap-pic-w pos-relative">
                                                     <img @click="viewImage(changeBgImg)" width="100%" :src="changeBgImg"
                                                         alt="">
-                                                    <button @click="viewImage(changeBgImg)"
+                                                    <button style="background: transparent;" @click="viewImage(changeBgImg)"
                                                         class="flex-c-m size-108 how-pos1 border-0 fs-16 cl10 hov-btn3 trans-04"
                                                         href="">
                                                         <i class="fa fa-expand fs-3"></i>

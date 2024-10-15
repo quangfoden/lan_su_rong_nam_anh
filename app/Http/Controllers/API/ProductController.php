@@ -70,9 +70,11 @@ class ProductController extends Controller
         $imgRequests = [
             'bg_img' => $data['bg_img'],
             'details_img' => $data['details_img'],
+            'img_cover' => $data['img_cover'],
         ];
         unset($data['bg_img']);
         unset($data['details_img']);
+        unset($data['cover_img']);
 
         $products = $this->productsRepository->create($data);
 
@@ -107,9 +109,11 @@ class ProductController extends Controller
         $imgRequests = [
             'bg_img' => $data['bg_img'],
             'details_img' => $data['details_img'],
+            'img_cover' => $data['img_cover'],
         ];
         unset($data['bg_img']);
         unset($data['details_img']);
+        unset($data['img_cover']);
 
         $productImages = $this->productsService->getNewOverwriteProductImages($products, $imgRequests);
         $data = array_merge($data, $productImages);

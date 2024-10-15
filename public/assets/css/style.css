@@ -193,7 +193,7 @@ textarea {
 .swiper-button-next {
   width: 40px;
   height: 40px;
-  background-color: #007bff;
+  background-color: #ff0052;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -215,7 +215,7 @@ textarea {
 .swiper-button-prev {
   width: 40px;
   height: 40px;
-  background-color: #007bff;
+  background-color: #ff0052;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -1321,7 +1321,7 @@ h4.card-title .lang_selector {
 }
 .home-content #aboutSection .list-about-home .box.active {
   width: 630px;
-  border-left: 7px solid var(--color-blue);
+  border-left: 7px solid var(--color-pink);
 }
 .home-content #aboutSection .list-about-home .box.active .content {
   opacity: 1;
@@ -1961,7 +1961,7 @@ h4.card-title .lang_selector {
   z-index: 1;
   padding-bottom: 60px;
   padding-top: 20px;
-  background: #bc1823;
+  background: #fff;
 }
 .home-content #AllProductSection .wrap-search_text {
   display: flex;
@@ -2104,6 +2104,9 @@ h4.card-title .lang_selector {
   text-align: center;
   cursor: pointer;
   transition: all 0.6s ease;
+}
+.home-content #AllProductSection #newsLoadMore:hover {
+  background: var(--bg-nav);
   color: #fff;
 }
 .home-content #newsBannerSection {
@@ -2597,18 +2600,17 @@ h4.card-title .lang_selector {
   border-radius: 10px;
 }
 .home-content #QuestionAbout {
-  padding-block: 60px;
-  background: #bc1823;
+  background: #fff;
   background-size: cover;
-  color: #fff;
+  color: #222;
+  padding-inline: 0;
 }
 .home-content #QuestionAbout h2 {
   text-align: center;
-  color: #fff;
+  color: #222;
   font-size: clamp(30px, 6vw, 60px);
   line-height: 1;
-  margin-bottom: 60px;
-  text-shadow: 0 1px 0 #bc1823, 0 2px 0 #bc1823, 0 3px 0 #bc1823, 0 4px 0 #bc1823, 0 5px 0 #bc1823, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px;
 }
 .home-content #QuestionAbout .faqs .faq-item {
   border: 1px solid rgba(85, 85, 85, 0.3019607843);
@@ -2626,8 +2628,8 @@ h4.card-title .lang_selector {
 .home-content #QuestionAbout .faqs .faq-item .faq-question {
   position: relative;
   background: #fff;
-  color: #bc1823;
-  font-weight: 900;
+  color: #222;
+  font-weight: 500;
   border-radius: 10px 10px 0 0;
 }
 .home-content #QuestionAbout .faqs .faq-item .faq-question::after {
@@ -2636,7 +2638,7 @@ h4.card-title .lang_selector {
   right: 20px;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
-  border: solid #bc1823;
+  border: solid #222;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 5px;
@@ -2648,7 +2650,7 @@ h4.card-title .lang_selector {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .home-content #QuestionAbout #ImageKH .imgkh {
   max-width: 150px;

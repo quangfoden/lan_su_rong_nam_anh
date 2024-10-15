@@ -16,6 +16,7 @@ class Product extends Model
         'price',
         'bg_img',
         'details_img',
+        'img_cover',
         'is_hot',
         'status',
         'created_by',
